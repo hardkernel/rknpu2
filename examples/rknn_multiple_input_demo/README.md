@@ -23,10 +23,9 @@ adb shell
 cd /userdata/rknn_multiple_input_demo_Linux/
 ```
 
-- rk3566/rk3568/rk3588
 ```
 export LD_LIBRARY_PATH=./lib
-./rknn_multiple_input_demo model/<TARGET_PLATFORM>/multiple_input_demo.rknn model/input1.bin#model/input2.bin
+./rknn_multiple_input_demo model model/multiple_input_demo.rknn model/input1.bin#model/input2.bin
 ```
 
 # Android Demo
@@ -53,8 +52,7 @@ adb shell
 cd /data/rknn_multiple_input_demo_Android/
 ```
 
-- rk3566/rk3568/rk3588
 ```
 export LD_LIBRARY_PATH=./lib
-./rknn_multiple_input_demo model/<TARGET_PLATFORM>/multiple_input_demo.rknn model/input1.bin#model/input2.bin
+./rknn_multiple_input_demo model/ model/multiple_input_demo.rknn model/input1.bin#model/input2.bin
 ```

@@ -6,13 +6,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wl,--allow-shlib-undefined")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wl,--allow-shlib-undefined")
 
 # rknn api
-if(TARGET_SOC STREQUAL "rk356x")
-  set(RKNN_API_PATH ${CMAKE_SOURCE_DIR}/../../runtime/RK356X/${CMAKE_SYSTEM_NAME}/librknn_api)
-elseif(TARGET_SOC STREQUAL "rk3588")
-  set(RKNN_API_PATH ${CMAKE_SOURCE_DIR}/../../runtime/RK3588/${CMAKE_SYSTEM_NAME}/librknn_api)
-else()
-  message(FATAL_ERROR "TARGET_SOC is not set, ref value: rk356x or rk3588")
-endif()
+set(RKNN_API_PATH ${CMAKE_SOURCE_DIR}/../../runtime/${CMAKE_SYSTEM_NAME}/librknn_api)
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Android")
   set(RKNN_RT_LIB ${RKNN_API_PATH}/${CMAKE_ANDROID_ARCH_ABI}/librknnrt.so)
@@ -30,13 +24,8 @@ include_directories(${RKNN_API_PATH}/include)
 include_directories(${CMAKE_SOURCE_DIR}/../3rdparty/)
 
 #rga
-if(TARGET_SOC STREQUAL "rk356x")
-  set(RGA_PATH ${CMAKE_SOURCE_DIR}/../3rdparty/rga/RK356X)
-elseif(TARGET_SOC STREQUAL "rk3588")
-  set(RGA_PATH ${CMAKE_SOURCE_DIR}/../3rdparty/rga/RK3588)
-else()
-  message(FATAL_ERROR "TARGET_SOC is not set, ref value: rk356x or rk3588")
-endif()
+set(RGA_PATH ${CMAKE_SOURCE_DIR}/../3rdparty/rga)
+
 if (CMAKE_SYSTEM_NAME STREQUAL "Android")
   set(RGA_LIB ${RGA_PATH}/lib/Android/${CMAKE_ANDROID_ARCH_ABI}/librga.so)
 else()

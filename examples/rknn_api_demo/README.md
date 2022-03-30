@@ -2,10 +2,10 @@
 # Aarch64 Linux Demo
 ## build
 
-modify `GCC_COMPILER` on `build-linux_<TARGET_PLATFORM>.sh` for target platform, then execute
+modify `GCC_COMPILER` on `build-linux.sh` for target platform
 
 ```
-./build-linux_<TARGET_PLATFORM>.sh
+./build-linux.sh
 ```
 
 ## install
@@ -26,8 +26,8 @@ cd /userdata/rknn_api_demo_Linux/
 
 ```
 export LD_LIBRARY_PATH=./lib
-./rknn_create_mem_demo model/<TARGET_PLATFORM>/mobilenet_v1.rknn model/dog_224x224.jpg
-./rknn_create_mem_with_rga_demo model/<TARGET_PLATFORM>/mobilenet_v1.rknn model/dog_224x224.jpg
+./rknn_create_mem_demo model/ model/mobilenet_v1.rknn model/dog_224x224.jpg
+./rknn_create_mem_with_rga_demo model/ model/mobilenet_v1.rknn model/dog_224x224.jpg
 ```
 
 # Android Demo
@@ -57,11 +57,11 @@ cd /data/rknn_api_demo_Android/
 
 ```
 export LD_LIBRARY_PATH=./lib
-./rknn_create_mem_demo model/<TARGET_PLATFORM>/mobilenet_v1.rknn model/dog_224x224.jpg
-./rknn_create_mem_with_rga_demo model/<TARGET_PLATFORM>/mobilenet_v1.rknn model/dog_224x224.jpg
-./rknn_with_mmz_demo model/<TARGET_PLATFORM>/mobilenet_v1.rknn model/dog_224x224.jpg
-./rknn_set_internal_mem_from_fd_demo model/<TARGET_PLATFORM>/mobilenet_v1.rknn model/dog_224x224.jpg
-./rknn_set_internal_mem_from_phy_demo model/<TARGET_PLATFORM>/mobilenet_v1.rknn model/dog_224x224.jpg
+./rknn_create_mem_demo model/mobilenet_v1.rknn model/dog_224x224.jpg
+./rknn_create_mem_with_rga_demo model/mobilenet_v1.rknn model/dog_224x224.jpg
+./rknn_with_mmz_demo model/mobilenet_v1.rknn model/dog_224x224.jpg
+./rknn_set_internal_mem_from_fd_demo model/mobilenet_v1.rknn model/dog_224x224.jpg
+./rknn_set_internal_mem_from_phy_demo model/mobilenet_v1.rknn model/dog_224x224.jpg
 ```
 
 # Note
