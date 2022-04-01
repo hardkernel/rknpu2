@@ -1,4 +1,3 @@
-下述<TARGET_PLATFORM>是RK356X或RK3588
 # Aarch64 Linux Demo
 ## build
 
@@ -33,10 +32,10 @@ export LD_LIBRARY_PATH=./lib
 # Android Demo
 ## build
 
-modify `ANDROID_NDK_PATH` on `build-android_<TARGET_PLATFORM>.sh` for target platform, then execute
+modify `ANDROID_NDK_PATH` on `build-android.sh` for target platform, then execute
 
 ```
-./build-android_<TARGET_PLATFORM>.sh
+./build-android.sh
 ```
 
 ## install
