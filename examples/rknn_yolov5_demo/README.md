@@ -65,7 +65,8 @@ c. 将大kernel_size的MaxPooling改成3x3 MaxPooling Stack结构
 
 ### 编译
 
-根据指定平台修改`build-android.sh`中的Android NDK的路径 `ANDROID_NDK_PATH`
+根据指定平台修改`build-android_<TARGET_PLATFORM>.sh`中的Android NDK的路径 `ANDROID_NDK_PATH`，<TARGET_PLATFORM>可以是RK356X或RK3588 例如修改成：
+
 ```sh
 ANDROID_NDK_PATH=~/opt/tool_chain/android-ndk-r17
 ```
@@ -73,7 +74,7 @@ ANDROID_NDK_PATH=~/opt/tool_chain/android-ndk-r17
 然后执行：
 
 ```sh
-./build-android.sh
+./build-android_<TARGET_PLATFORM>.sh
 ```
 
 ### 推送执行文件到板子
@@ -101,7 +102,7 @@ export LD_LIBRARY_PATH=./lib
 
 ### 编译
 
-根据指定平台修改`build-linux.sh`中的交叉编译器所在目录的路径`TOOL_CHAIN`，例如修改成
+根据指定平台修改`build-linux_<TARGET_PLATFORM>.sh`中的交叉编译器所在目录的路径`TOOL_CHAIN`，例如修改成
 
 ```sh
 export TOOL_CHAIN=~/opt/tool_chain/gcc-9.3.0-x86_64_aarch64-linux-gnu/host
@@ -110,7 +111,7 @@ export TOOL_CHAIN=~/opt/tool_chain/gcc-9.3.0-x86_64_aarch64-linux-gnu/host
 然后执行：
 
 ```sh
-./build-linux.sh
+./build-linux_<TARGET_PLATFORM>.sh
 ```
 
 ### 推送执行文件到板子

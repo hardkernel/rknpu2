@@ -1,3 +1,4 @@
+下述<TARGET_PLATFORM>是RK356X或RK3588
 # Aarch64 Linux Demo
 ## build
 
