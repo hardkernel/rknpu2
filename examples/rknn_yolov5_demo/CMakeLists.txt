@@ -13,7 +13,13 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 
 # rknn api
-set(RKNN_API_PATH ${CMAKE_SOURCE_DIR}/../../runtime/${CMAKE_SYSTEM_NAME}/librknn_api)
+if(TARGET_SOC STREQUAL "rk356x")
+  set(RKNN_API_PATH ${CMAKE_SOURCE_DIR}/../../runtime/RK356X/${CMAKE_SYSTEM_NAME}/librknn_api)
+elseif(TARGET_SOC STREQUAL "rk3588")
+  set(RKNN_API_PATH ${CMAKE_SOURCE_DIR}/../../runtime/RK3588/${CMAKE_SYSTEM_NAME}/librknn_api)
+else()
+  message(FATAL_ERROR "TARGET_SOC is not set, ref value: rk356x or rk3588")
+endif()
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Android")
   set(RKNN_RT_LIB ${RKNN_API_PATH}/${CMAKE_ANDROID_ARCH_ABI}/librknnrt.so)
@@ -40,8 +46,13 @@ endif()
 find_package(OpenCV REQUIRED)
 
 #rga
-set(RGA_PATH ${CMAKE_SOURCE_DIR}/../3rdparty/rga)
-
+if(TARGET_SOC STREQUAL "rk356x")
+  set(RGA_PATH ${CMAKE_SOURCE_DIR}/../3rdparty/rga/RK356X)
+elseif(TARGET_SOC STREQUAL "rk3588")
+  set(RGA_PATH ${CMAKE_SOURCE_DIR}/../3rdparty/rga/RK3588)
+else()
+  message(FATAL_ERROR "TARGET_SOC is not set, ref value: rk356x or rk3588")
+endif()
 if (CMAKE_SYSTEM_NAME STREQUAL "Android")
   set(RGA_LIB ${RGA_PATH}/lib/Android/${CMAKE_ANDROID_ARCH_ABI}/librga.so)
 else()

@@ -2,8 +2,12 @@
 # Aarch64 Linux Demo
 ## build
 
+modify `GCC_COMPILER` on `build-linux_<TARGET_PLATFORM>.sh` for target platform,
+
+then execute
+
 ```
-./build-linux.sh
+./build-linux_<TARGET_PLATFORM>.sh
 ```
 
 ## install
@@ -23,16 +27,16 @@ cd /userdata/rknn_mobilenet_demo_Linux/
 
 ```
 export LD_LIBRARY_PATH=./lib
-./rknn_mobilenet_demo model/mobilenet_v1.rknn model/dog_224x224.jpg
+./rknn_mobilenet_demo model/<TARGET_PLATFORM>/mobilenet_v1.rknn model/dog_224x224.jpg
 ```
 
 # Android Demo
 ## build
 
-modify `ANDROID_NDK_PATH` on `build-android.sh` for target platform, then execute
+modify `ANDROID_NDK_PATH` on `build-android_<TARGET_PLATFORM>.sh` for target platform, then execute
 
 ```
-./build-android.sh
+./build-android_<TARGET_PLATFORM>.sh
 ```
 
 ## install
@@ -52,5 +56,5 @@ cd /data/rknn_mobilenet_demo_Android/
 
 ```
 export LD_LIBRARY_PATH=./lib
-./rknn_mobilenet_demo model/mobilenet_v1.rknn model/dog_224x224.jpg
+./rknn_mobilenet_demo model/<TARGET_PLATFORM>/mobilenet_v1.rknn model/dog_224x224.jpg
 ```

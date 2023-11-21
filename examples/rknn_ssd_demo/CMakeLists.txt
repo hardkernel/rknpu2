@@ -6,7 +6,13 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 # rknn api
-set(RKNN_API_PATH ${CMAKE_SOURCE_DIR}/../../runtime/${CMAKE_SYSTEM_NAME}/librknn_api)
+if(TARGET_SOC STREQUAL "rk356x")
+  set(RKNN_API_PATH ${CMAKE_SOURCE_DIR}/../../runtime/RK356X/${CMAKE_SYSTEM_NAME}/librknn_api)
+elseif(TARGET_SOC STREQUAL "rk3588")
+  set(RKNN_API_PATH ${CMAKE_SOURCE_DIR}/../../runtime/RK3588/${CMAKE_SYSTEM_NAME}/librknn_api)
+else()
+  message(FATAL_ERROR "TARGET_SOC is not set, ref value: rk356x or rk3588")
+endif()
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Android")
   set(RKNN_RT_LIB ${RKNN_API_PATH}/${CMAKE_ANDROID_ARCH_ABI}/librknnrt.so)

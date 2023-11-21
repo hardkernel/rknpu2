@@ -61,6 +61,22 @@ c. 将大kernel_size的MaxPooling改成3x3 MaxPooling Stack结构
 
 训练和导出onnx模型过程请参考请参考https://github.com/EASY-EAI/yolov5
 
+## 注意事项：
+
+1. 使用rknn-toolkit2版本大于等于1.1.2。
+
+2. 切换成自己训练的模型时，请注意对齐anchor等后处理参数，否则会导致后处理解析出错。
+
+3. 官网和rk预训练模型都是检测80类的目标，如果自己训练的模型,需要更改include/postprocess.h中的OBJ_CLASS_NUM以及NMS_THRESH,BOX_THRESH后处理参数。
+
+4. 测试代码导出模型的时候指定了输出节点['378', '439', '500']，分别为原模型的第2、3、4输出节点的去掉 三个Reshape 后面的层（不包含Reshape层），
+   对应输出的shape是[1,255,80,80],[1,255,40,40],[1,255,20,20]。
+   对于自己训练的模型输出节点的顺序和shape的要求必须是[1,？,80,80]，[1,？,40,40]，[1,？,20,20]，C代码后处理才能正确处理。
+
+5. 默认导出rk356x的rknn模型,导出rk3588模型需要修改rknn.config的target_platform参数为"rk3588".
+
+6. demo需要librga.so的支持,编译使用请参考https://github.com/rockchip-linux/linux-rga
+
 ## Android Demo
 
 ### 编译
@@ -94,7 +110,7 @@ adb shell
 cd /data/rknn_yolov5_demo/
 
 export LD_LIBRARY_PATH=./lib
-./rknn_yolov5_demo model/ model/yolov5s-640-640.rknn model/bus.jpg
+./rknn_yolov5_demo model/<TARGET_PLATFORM>/yolov5s-640-640.rknn model/bus.jpg
 ```
 
 
@@ -129,7 +145,7 @@ adb shell
 cd /userdata/rknn_yolov5_demo_Linux/
 
 export LD_LIBRARY_PATH=./lib
-./rknn_yolov5_demo model/ model/yolov5s-640-640.rknn model/bus.jpg
+./rknn_yolov5_demo model/<TARGET_PLATFORM>/yolov5s-640-640.rknn model/bus.jpg
 ```
 
 Note: Try searching the location of librga.so and add it to LD_LIBRARY_PATH if the librga.so is not found on the lib folder. \
