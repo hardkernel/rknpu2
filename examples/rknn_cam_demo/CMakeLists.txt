@@ -42,16 +42,6 @@ include_directories(${RKNN_API_PATH}/include)
 include_directories(${CMAKE_SOURCE_DIR}/../3rdparty)
 
 # opencv
-if(CMAKE_SYSTEM_NAME STREQUAL "Android")
-  set(OpenCV_DIR ${CMAKE_SOURCE_DIR}/../3rdparty/opencv/OpenCV-android-sdk/sdk/native/jni/abi-${CMAKE_ANDROID_ARCH_ABI})
-else()
-  if(LIB_ARCH STREQUAL "armhf")
-    set(OpenCV_DIR ${CMAKE_SOURCE_DIR}/../3rdparty/opencv/opencv-linux-armhf/share/OpenCV)
-  else()
-    set(OpenCV_DIR ${CMAKE_SOURCE_DIR}/../3rdparty/opencv/opencv-linux-aarch64/share/OpenCV)
-  endif()
-endif()
-
 find_package(OpenCV REQUIRED)
 
 # rga
