@@ -72,7 +72,7 @@ add_executable(rknn_cam_demo
 
 target_link_libraries(rknn_cam_demo
 	${RKNN_RT_LIB}
-	${RGA_LIBS}
+	${RGA_LIB}
 	${OpenCV_LIBS}
 )
 
