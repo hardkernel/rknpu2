@@ -2,12 +2,12 @@
 
 wiki:
 
-https://wiki.odroid.com/odroid-m1/application_note/rknpu
+https://wiki.odroid.com/odroid-m1/application_note/rknpu/rknpu
 
 ```sh
 git clone http://github.com/hardkernel/rknpu2.git
 cd rknpu2/examples/rknn_cam_demo
-./build-linux.sh
+./build-linux_{model}.sh
 ```
 
 ```sh
